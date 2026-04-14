@@ -1,0 +1,43 @@
+mode: scan_only  # scan_only | dry_run | live
+
+scan:
+  interval_seconds: 30
+  strategies:
+    - cross_platform
+    - bundle
+    - multi_outcome
+
+matching:
+  similarity_threshold: 0.65
+  cache_ttl_hours: 24
+  structural_prefilter: true
+
+arbitrage:
+  min_edge_pct: 0.02
+  min_profit_after_fees_cents: 0.5
+  max_days_to_settlement: 90
+
+execution:
+  default_size_contracts: 10
+  max_size_contracts: 100
+  use_limit_orders: true
+  timeout_seconds: 5
+
+risk:
+  max_position_per_market: 50
+  max_global_exposure_dollars: 500
+  max_daily_loss_dollars: 50
+  kill_switch_loss_dollars: 100
+
+rotation:
+  enabled: true
+  exit_spread_threshold_cents: 1.0
+
+dashboard:
+  enabled: false
+  host: 127.0.0.1
+  port: 8080
+
+logging:
+  level: INFO
+  format: human
